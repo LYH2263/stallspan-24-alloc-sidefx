@@ -91,6 +91,21 @@ h1 { margin: 0 0 0.2rem; font-size: 1.2rem; font-weight: 800; color: var(--ss-in
   writing-mode: vertical-rl;
   letter-spacing: 0.15em;
 }
+.ss-band-cell.ss-trial {
+  opacity: 0.55;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0,0,0,0.18) 0 6px,
+    transparent 6px 12px
+  );
+}
+.ss-badge {
+  display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; color: var(--ss-muted);
+  border: 1px solid currentColor; margin: 0 0 0.6rem;
+}
+.ss-badge-ok { color: #7fc98f; }
+.ss-badge-trial { color: #e0b56a; }
 .ss-band-ruler {
   display: flex; justify-content: space-between;
   font-size: 0.7rem; color: var(--ss-muted); padding: 0 0.25rem;

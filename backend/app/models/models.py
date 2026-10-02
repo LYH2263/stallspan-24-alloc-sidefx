@@ -38,3 +38,12 @@ class AllocationRun(Base):
     segment_id: Mapped[int] = mapped_column(ForeignKey("segments.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     result_json: Mapped[str] = mapped_column(Text, default="{}")
+
+class AllocationAuditEvent(Base):
+    """开间审计事件：每次确认落库一条，与运行行同一事务写入。"""
+    __tablename__ = "allocation_audit_events"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    run_id: Mapped[int] = mapped_column(ForeignKey("allocation_runs.id"))
+    market_day_id: Mapped[int] = mapped_column(ForeignKey("market_days.id"))
+    segment_id: Mapped[int] = mapped_column(ForeignKey("segments.id"))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
