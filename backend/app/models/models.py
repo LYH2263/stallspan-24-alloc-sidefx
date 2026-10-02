@@ -35,6 +35,18 @@ class Pillar(Base):
 class AllocationRun(Base):
     __tablename__ = "allocation_runs"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    market_day_id: Mapped[int] = mapped_column(ForeignKey("market_days.id"))
     segment_id: Mapped[int] = mapped_column(ForeignKey("segments.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     result_json: Mapped[str] = mapped_column(Text, default="{}")
+
+class AllocationAuditEvent(Base):
+    """确认成功的审计事件；必须与对应 AllocationRun 在同一事务内落库。"""
+    __tablename__ = "allocation_audit_events"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    market_day_id: Mapped[int] = mapped_column(ForeignKey("market_days.id"))
+    segment_id: Mapped[int] = mapped_column(ForeignKey("segments.id"))
+    run_id: Mapped[int] = mapped_column(ForeignKey("allocation_runs.id"))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    kind: Mapped[str] = mapped_column(String(32), default="confirmed")
+    detail_json: Mapped[str] = mapped_column(Text, default="{}")

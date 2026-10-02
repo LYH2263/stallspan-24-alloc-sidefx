@@ -141,6 +141,18 @@ th { color: var(--ss-muted); font-weight: 700; font-size: 0.78rem; }
 }
 .btn:hover { filter: brightness(1.06); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--ss-ok); box-shadow: 2px 2px 0 var(--ss-asphalt); }
+.btn-danger { background: var(--ss-bad); box-shadow: 2px 2px 0 var(--ss-asphalt); }
+.ss-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 0.75rem 0; }
+.ss-hint { font-size: 0.82rem; color: var(--ss-ok); margin: 0.25rem 0; }
+.ss-mode-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.5rem 0; }
+.tag {
+  display: inline-block; padding: 0.12rem 0.55rem; border-radius: 3px;
+  font-size: 0.74rem; font-weight: 700;
+}
+.tag-confirmed { background: rgba(58,122,74,0.18); color: var(--ss-ok); }
+.tag-preview { background: rgba(196,92,38,0.18); color: var(--ss-accent); }
+.tag-rejected { background: rgba(163,58,44,0.18); color: var(--ss-bad); }
 .muted { color: var(--ss-muted); }
 .stat { font-size: 1.5rem; font-weight: 800; }
 
